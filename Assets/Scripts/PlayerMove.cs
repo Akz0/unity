@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] private float XMove;
-    [SerializeField] private float YMove;
-    [SerializeField] private float ZMove;
+    [SerializeField] private float HorizontalMoveSpeed;
+    [SerializeField] private float VerticalMoveSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -17,20 +16,13 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x > 10 || transform.position.x < -10)
-        {
-            XMove *= -1;
-        }
+        MovePlayer();
+    }
 
-        if (transform.position.z > 10 || transform.position.z < -10)
-        {
-            ZMove *= -1;
-        }
-
-        if (transform.position.y > 10 || transform.position.y < -10)
-        {
-            YMove *= -1;
-        }
-        transform.Translate(XMove, YMove, ZMove);
+    void MovePlayer()
+    {
+        float XMove = Input.GetAxis("Horizontal") * HorizontalMoveSpeed * Time.deltaTime;
+        float ZMove = Input.GetAxis("Vertical") * VerticalMoveSpeed * Time.deltaTime;
+        transform.Translate(XMove, 0, ZMove);
     }
 }

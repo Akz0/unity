@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
 
 public class JammoController : MonoBehaviour
 {
+
+
+
+    public AudioSource footstep1;
+    public AudioSource footstep2;
+
     PlayerInput playerInput;
     CharacterController characterController;
     Animator animator;
@@ -131,5 +138,14 @@ public class JammoController : MonoBehaviour
     void OnDisable()
     {
         playerInput.CharacterControls.Disable();
+    }
+
+    public void JammoStepSoundWood_1()
+    {
+        footstep1.Play();
+    }
+    public void JammoStepSoundWood_2()
+    {
+        footstep1.Play();
     }
 }
